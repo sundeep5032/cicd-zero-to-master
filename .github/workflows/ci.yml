@@ -19,7 +19,7 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Show env vars
+      - name: Show env var
         run: |
           echo "App: $APP_NAME"
           echo "Env: $BUILD_ENV"
