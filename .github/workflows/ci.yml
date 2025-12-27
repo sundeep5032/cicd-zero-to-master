@@ -6,19 +6,29 @@ on:
   pull_request:
     branches: [ "main" ]
 
+env:
+  APP_NAME: my-demo-app
+
 jobs:
   build:
     runs-on: ubuntu-latest
+    env:
+      BUILD_ENV: dev
 
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Print working directory
-        run: pwd
+      - name: Show env vars
+        run: |
+          echo "App: $APP_NAME"
+          echo "Env: $BUILD_ENV"
 
-      - name: List files
-        run: ls -la
+      - name: Cache example
+        uses: actions/cache@v4
+        with:
+          path: ~/.cache
+          key: ${{ runner.os }}-cache-${{ github.sha }}
 
-      - name: Run build step
-        run: echo "Build step completed"
+      - name: Build step
+        run: echo "Build successful"
