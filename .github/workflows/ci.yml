@@ -13,4 +13,4 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Run a command
-        run: echo "Hello from CI pipeline"
+        run: exit 1
